@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.mapper.BoardMapper">
+
+    <select id="boardCnt" resultType="int">
+        SELECT count(boardId) AS CNT FROM tbl_board;
+    </select>
+
+    <update id="addViewCnt" parameterType="com.example.demo.domain.Board">
+        UPDATE tbl_board
+        SET read=#{read}+1
+        WHERE boardId=#{boardId};
+    </update>
+
+    <!-- how is the resultType "Board"? shouldn't it be a List of Boards?-->
+    <select id="getList" resultType="com.example.demo.domain.Board">
+        SELECT
+        *
+        FROM tbl_board;
+    </select>
+
+    <select id="getBoard" parameterType="Long" resultType="com.example.demo.domain.Board">
+        SELECT
+        *
+        FROM tbl_board
+        WHERE boardId=#{boardId};
+    </select>
+
+    <insert id="create" parameterType="com.example.demo.domain.Board">
+        INSERT INTO tbl_board(title, name, content)
+        VALUES (#{title}, #{name}, #{content});
+    </insert>
+
+    <update id="update" parameterType="com.example.demo.domain.Board">
+        UPDATE tbl_board
+        SET title=#{title}, content=#{content}
+        WHERE boardId=#{boardId};
+    </update>
+
+    <delete id="delete" parameterType="Long">
+        DELETE FROM tbl_board
+        WHERE boardId=#{boardId};
+    </delete>
+</mapper>

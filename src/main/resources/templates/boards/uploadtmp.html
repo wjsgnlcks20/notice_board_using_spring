@@ -1,0 +1,18 @@
+<html xmlns xmlns:th="http://www.w3.org/1999/xhtml" : th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="container">
+    <form th:action="@{upload}" method="post">
+        작성자 <input type="text" class="form-control" name="name">
+        제목 <input type="text" class="form-control" name="title">
+        <textarea class="form-control" name="content">내용</textarea>
+
+        <button type="submit">btn</button>
+    </form>
+</div>
+</body>
+</html>
